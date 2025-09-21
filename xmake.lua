@@ -73,8 +73,8 @@ add_defines("HAVE_STD_UNIQUE_PTR", --- if not define this quickfix will use std:
 
 add_packages("quickfix", "spdlog", "fmt", "boost")
 
-
-target("black-arrow-initiator")
+local main_target_name = "black-arrow-initiator"
+target(main_target_name)
 	add_defines("VERSION_MAJOR=1", "VERSION_MINOR=0", "VERSION_ALTER=0")
 	add_files("src/*.cpp")
 	remove_files("src/acceptor_main.cpp")
@@ -104,7 +104,7 @@ on_run(function()
 
 	config.load()
 
-	local target = project.target("black-arrow-acceptor")
+	local target = project.target(main_target_name)
 
 	local list = { vformat(path.join("$(projectdir)", target:targetdir(), "*")),
 		vformat("$(projectdir)/bin/*"),
