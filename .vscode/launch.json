@@ -35,5 +35,22 @@
                 "close": true
             }
         },
+        {
+            "name": "(benchmark debug) Launch",
+            //"type": "cppdbg",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/windows/x64/debug/benchmark.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build/windows/x64/debug",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "",
+            //"preLaunchTask": "build",
+            "presentation": {
+                "close": true
+            }
+        },
     ],
 }
