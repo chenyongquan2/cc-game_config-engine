@@ -1,0 +1,15 @@
+// proto/level_config.proto
+syntax = "proto3";
+
+package game;
+
+message LevelConfig {
+  int32 id = 1;
+  string name = 2;
+  int32 difficulty = 3;
+  int32 monster_count = 4;
+}
+
+message LevelTable {
+  repeated LevelConfig levels = 1;
+}

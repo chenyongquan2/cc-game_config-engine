@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(black-arrow-acceptor debug) Launch",
+            "name": "(generate_config debug) Launch",
             //"type": "cppdbg",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/windows/x64/debug/black-arrow-acceptor.exe",
+            "program": "${workspaceFolder}/build/windows/x64/debug/generate_config.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build/windows/x64/debug",
@@ -19,11 +19,11 @@
             }
         },
         {
-            "name": "(black-arrow-initiator debug) Launch",
+            "name": "(load_config debug) Launch",
             //"type": "cppdbg",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/windows/x64/debug/black-arrow-initiator.exe",
+            "program": "${workspaceFolder}/build/windows/x64/debug/load_config.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build/windows/x64/debug",

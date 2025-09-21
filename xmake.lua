@@ -62,7 +62,9 @@ add_requires("spdlog", { alias = "spdlog", configs = { header_only = true }, deb
 add_requires("fmt", { alias = "fmt", configs = { header_only = true }, debug = is_mode("debug") })
 add_requires("conan::quickfix/1.15.1", { alias = "quickfix", configs = { defines = { "HAVE_SSL=ON" } }, debug = is_mode("debug") })
 add_requires("conan::boost/1.85.0", { alias = "boost", configs = { debug = is_mode("debug") } })
-
+add_requires("conan::nlohmann_json/3.12.0", { alias = "nlohmann_json", configs = { debug = is_mode("debug") } })
+--Note: To avoid add multi version of protobuf, so we have better to set the version of protobuf as same as the version of protobuf required by the grpc/1.67.1 
+add_requires("conan::protobuf/5.27.0", { alias = "protobuf", configs = { debug = is_mode("debug") } })
 
 add_defines("HAVE_STD_UNIQUE_PTR", --- if not define this quickfix will use std::auto_ptr which has been deprecated in c++17, cannot compile under cpp20
 	"HAVE_SSL"                     --- invoke SSL support of quickfix
@@ -70,24 +72,25 @@ add_defines("HAVE_STD_UNIQUE_PTR", --- if not define this quickfix will use std:
 	"SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE", "SPDLOG_WCHAR_TO_UTF8_SUPPORT", "WIN32_LEAN_AND_MEAN"
 )
 
+add_packages("quickfix", "spdlog", "fmt", "boost", "nlohmann_json", "protobuf")
 
-add_packages("quickfix", "spdlog", "fmt", "boost")
-
-local main_target_name = "black-arrow-initiator"
-local sub_target_name = "black-arrow-acceptor"
+local main_target_name = "generate_config"
 target(main_target_name)
-	add_defines("VERSION_MAJOR=1", "VERSION_MINOR=0", "VERSION_ALTER=0")
-	add_files("src/*.cpp")
-	remove_files("src/acceptor_main.cpp")
+	add_defines("VERSION_MAJOR=1", "VERSION_MINOR=2", "VERSION_ALTER=0")
+	add_files("src/*.cpp", "src/generated/*.cc")
+	remove_files("src/load_config_main.cpp")
 	add_includedirs("src")
+	add_includedirs("src/generated")
 	set_kind("binary")
 	add_deps("cc-common")
 
+local sub_target_name = "load_config"
 target(sub_target_name)
-	add_defines("VERSION_MAJOR=1", "VERSION_MINOR=0", "VERSION_ALTER=0")
-	add_files("src/*.cpp")
-	remove_files("src/initiator_main.cpp")
+	add_defines("VERSION_MAJOR=1", "VERSION_MINOR=2", "VERSION_ALTER=0")
+	add_files("src/*.cpp", "src/generated/*.cc")
+	remove_files("src/generate_config_main.cpp")
 	add_includedirs("src")
+	add_includedirs("src/generated")
 	set_kind("binary")
 	add_deps("cc-common")
 
