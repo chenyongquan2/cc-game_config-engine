@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Xmake: select debug",
+      "type": "shell",
+      "command": "xmake f -m debug",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build echo_acceptor (xmake)",
+      "type": "shell",
+      "command": "xmake -w -y -vD echo_acceptor",
+      "dependsOn": "Xmake: select debug",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$msCompile"]
+    },
+    {
+      "label": "Build echo_initiator (xmake)",
+      "type": "shell",
+      "command": "xmake -w -y -vD echo_initiator",
+      "dependsOn": "Xmake: select debug",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$msCompile"]
+    },
+    {
+      "label": "Build all (xmake)",
+      "type": "shell",
+      "command": "xmake -w -y -vD",
+      "dependsOn": "Xmake: select debug",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$msCompile"]
+    }
+  ]
+}
+
+

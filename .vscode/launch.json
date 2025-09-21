@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(black-arrow-acceptor debug) Launch",
+            //"type": "cppdbg",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/windows/x64/debug/black-arrow-acceptor.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build/windows/x64/debug",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "",
+            //"preLaunchTask": "build",
+            "presentation": {
+                "close": true
+            }
+        },
+        {
+            "name": "(black-arrow-initiator debug) Launch",
+            //"type": "cppdbg",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/windows/x64/debug/black-arrow-initiator.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build/windows/x64/debug",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "",
+            //"preLaunchTask": "build",
+            "presentation": {
+                "close": true
+            }
+        },
+    ],
+}

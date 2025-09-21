@@ -1,0 +1,11 @@
+{
+    "editor.formatOnSave": true,  // 保存时自动格式化
+
+    // 指定 C/C++ 文件使用 clang-format
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"   // 或者 "ms-vscode.cpptools"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    }
+}
