@@ -1,6 +1,6 @@
 #include "config_io.h"
 
-#include "benchmark/benchmark.h"
+#include <benchmark/benchmark.h>
 
 static void BM_LoadProtobuf(benchmark::State& state)
 {

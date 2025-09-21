@@ -32,6 +32,17 @@ bool ConfigIO::SaveProtobuf(const game::LevelTable& table, const std::string& pa
     return true;
 }
 
+bool ConfigIO::LoadProtobuf(game::LevelTable& table, const std::string& path)
+{
+    std::ifstream ifs(path, std::ios::in | std::ios::binary);
+    if (!table.ParseFromIstream(&ifs)) {
+        SPDLOG_ERROR("Failed to load protobuf: {}", path);
+        return false;
+    }
+    SPDLOG_INFO("Loaded protobuf config: {}", path);
+    return true;
+}
+
 bool ConfigIO::SaveJSON(const game::LevelTable& table, const std::string& path)
 {
     namespace fs = std::filesystem;
@@ -55,19 +66,9 @@ bool ConfigIO::SaveJSON(const game::LevelTable& table, const std::string& path)
         SPDLOG_ERROR("Cannot open file for writing: {}", path);
         return false;
     }
-    ofs << j.dump(4);
+    // Todo:这里是干嘛呢？
+    ofs << j.dump(4); // 加缩进，美化输出
     SPDLOG_INFO("Saved JSON config: {}", path);
-    return true;
-}
-
-bool ConfigIO::LoadProtobuf(game::LevelTable& table, const std::string& path)
-{
-    std::ifstream ifs(path, std::ios::in | std::ios::binary);
-    if (!table.ParseFromIstream(&ifs)) {
-        SPDLOG_ERROR("Failed to load protobuf: {}", path);
-        return false;
-    }
-    SPDLOG_INFO("Loaded protobuf config: {}", path);
     return true;
 }
 
